@@ -2,7 +2,7 @@
 with (import ./default.nix);
 
 compilerSet.shellFor {
-  packages = p: [];
+  packages = p: [p.realworld-api];
   buildInputs = with compilerSet; [
     cabal-install
     ghc
