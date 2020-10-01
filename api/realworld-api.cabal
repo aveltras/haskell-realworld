@@ -8,5 +8,7 @@ library
   default-language: Haskell2010
   exposed-modules: Lib
   build-depends: base
+               , aeson
                , servant
+               , servant-auth
                , text

@@ -1,10 +1,14 @@
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE DataKinds     #-}
 {-# LANGUAGE TypeOperators #-}
 
 module Lib where
 
+import           Data.Aeson
 import           Data.Text
 import           Servant.API
+import GHC.Generics (Generic)
 
 
 type RootAPI = "users" :> AuthAPI
@@ -49,14 +53,14 @@ data UserPayload = UserPayload
     username :: Text,
     bio      :: Text,
     image    :: Text
-  }
+  } deriving (Generic, ToJSON, FromJSON)
 
 data ProfilePayload = ProfilePayload
   { profileUsername  :: Text
   , profileBio       :: Text
   , profileImage     :: Text
   , profileFollowing :: Bool
-  }
+  } deriving (Generic, ToJSON, FromJSON)
 
 type TagListPayload = [Text]
 
@@ -71,7 +75,7 @@ data ArticlePayload = ArticlePayload
   , articleFavorited      :: Bool
   , articleFavoritesCount :: Int
   , articleAuthor         :: ProfilePayload
-  }
+  } deriving (Generic, ToJSON, FromJSON)
 
 data CommentPayload = CommentPayload
   { commentId        :: Int
@@ -79,34 +83,34 @@ data CommentPayload = CommentPayload
   , commentUpdatedAt :: Text
   , commentBody      :: Text
   , commentAuthor    :: ProfilePayload
-  }
+  } deriving (Generic, ToJSON, FromJSON)
 
 newtype ErrorPayload = ErrorPayload
   { errorBody :: Text
-  }
+  } deriving (Generic, ToJSON, FromJSON)
 
 data LoginPayload = LoginPayload
   { loginEmail    :: Text
   , loginPassword :: Text
-  }
+  } deriving (Generic, ToJSON, FromJSON)
 
 data RegisterPayload = RegisterPayload
   { registerUsername :: Text
   , registerEmail    :: Text
   , registerPassword :: Text
-  }
+  } deriving (Generic, ToJSON, FromJSON)
 
 data CreateArticlePayload = CreateArticlePayload
   { createArticleTitle       :: Text
   , createArticleDescription :: Text
   , createArticleBody        :: Text
   , createArticleTagList     :: TagListPayload
-  }
+  } deriving (Generic, ToJSON, FromJSON)
 
 newtype UpdateArticlePayload = UpdateArticlePayload
   { updateArticleTitle :: Text
-  }
+  } deriving (Generic, ToJSON, FromJSON)
 
 newtype AddCommentPayload = AddCommentPayload
   { addCommentBody :: Text
-  }
+  } deriving (Generic, ToJSON, FromJSON)

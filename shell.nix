@@ -5,12 +5,14 @@ compilerSet.shellFor {
   packages = p: with p; [
     realworld-api
     realworld-backend
-    realworld-backend-fused-effects
   ];
   buildInputs = with compilerSet; [
     cabal-install
     ghc
     haskell-language-server
     hlint
+    (pkgs.writeShellScriptBin "dev" ''
+      ${pkgs.ghcid}/bin/ghcid -c "cabal repl realworld-backend" -W -T :main ''${@:2}
+    '')
   ];
 }
