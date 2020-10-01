@@ -1,0 +1,4 @@
+.direnv
+cabal.project.local
+dist
+dist-newstyle

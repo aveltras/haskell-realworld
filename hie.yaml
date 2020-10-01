@@ -1,0 +1,4 @@
+cradle:
+  cabal:
+    - path: "./api"
+      component: "realworld-api"
