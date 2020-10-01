@@ -1,1 +1,1 @@
-optional-packages: *
+optional-packages: **/*

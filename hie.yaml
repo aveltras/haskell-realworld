@@ -2,3 +2,7 @@ cradle:
   cabal:
     - path: "./api"
       component: "realworld-api"
+    - path: "./backend/common"
+      component: "realworld-backend"
+    - path: "./backend/fused-effects"
+      component: "realworld-backend-fused-effects"

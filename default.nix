@@ -15,6 +15,8 @@ let
       haskell = super.haskell // {
         packageOverrides = self: super: {
           realworld-api = super.callCabal2nix "realworld-api" (gitIgnore [./.gitignore] ./api) {}; #
+          realworld-backend = super.callCabal2nix "realworld-backend" (gitIgnore [./.gitignore] ./backend/common) {}; #
+          realworld-backend-fused-effects = super.callCabal2nix "realworld-backend-fused-effects" (gitIgnore [./.gitignore] ./backend/fused-effects) {}; #
         };
       };
     };
